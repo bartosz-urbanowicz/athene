@@ -1,0 +1,8 @@
+@import "tailwindcss";
+
+input, textarea, select {
+    background-color: white;
+    color: black;
+    padding: 0.25rem;
+    border: 1px solid black;
+}

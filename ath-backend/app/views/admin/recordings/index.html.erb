@@ -1,0 +1,11 @@
+<h1>All Recordings</h1>
+
+<%= link_to "Add", admin_recordings_new_path %>
+
+<ul>
+  <% @recordings.each do |recording| %>
+    <li>
+      <div><%= recording.species.name %></div>
+    </li>
+  <% end %>
+</ul>
