@@ -5,22 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4d21d75b-f4c6-4e83-8671-425ecbd4f6b5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.tailwind.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admin/dashboard/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/admin/shared/_navbar.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/layouts/admin.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tailwind.config.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/initializers/cloudinary.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Procfile.dev" beforeDir="false" afterPath="$PROJECT_DIR$/Procfile.dev" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/admin/recordings_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/admin/recordings_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/recording.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/recording.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/species.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/species.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/recordings/new.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/recordings/new.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/admin/shared/_navbar.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/admin/shared/_navbar.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/dev" beforeDir="false" afterPath="$PROJECT_DIR$/bin/dev" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/database.yml" beforeDir="false" afterPath="$PROJECT_DIR$/config/database.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +39,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1760540713158",
+    "com.intellij.lang.ruby.rbs.tools.collection.workspace.sync.RbsCollectionUpdateProjectActivity#LAST_UPDATE_TIMESTAMP": "1760783433433",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "/home/bartek/Desktop/projekty/athene/ath-backend",
     "node.js.detected.package.eslint": "true",
@@ -167,7 +162,9 @@
       <workItem from="1760516279606" duration="13566000" />
       <workItem from="1760540421020" duration="125000" />
       <workItem from="1760540553508" duration="93000" />
-      <workItem from="1760540653869" duration="7809000" />
+      <workItem from="1760540653869" duration="13304000" />
+      <workItem from="1760692402645" duration="11441000" />
+      <workItem from="1760783371287" duration="994000" />
     </task>
     <servers />
   </component>

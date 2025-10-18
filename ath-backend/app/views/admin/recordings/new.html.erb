@@ -1,49 +1,92 @@
 <div class="bg-gray-900 p-[2rem]">
-  <%= form_with(model: @recording, local: true) do |form| %>
-    <% if @recording.errors.any? %>
-      <div>
-        <h2><%= pluralize(recording.errors.count, "error") %> prohibited this recording from being saved:</h2>
-        <ul>
-          <% @recording.errors.full_messages.each do |msg| %>
-            <li><%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    <% end %>
+  <%= form_with(model: [:admin, @recording], local: true) do |form| %>
+
+    <%= @recording.errors.full_messages %>
+    <%= @recording %>
 
     <div>
-      <%= form.label :sound_url %>
-      <%= form.text_field :sound_url, class: "form-control" %>
+      <%= form.label :species_ids, "Species" %>
+      <%= form.collection_select :species_ids, Species.all, :id, :species, { prompt: "Select species", include_hidden: false }, { multiple: true, class: "form-control" } %>
+      <% if @recording.errors[:species_ids].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:species_ids].join(', ') %></p>
+      <% end %>
+    </div>
+
+    <div class="field">
+      <%= form.label :sound, "Upload Sound File" %>
+      <%= form.file_field :sound, direct_upload: true, class: "form-control" %>
+      <% if @recording.errors[:sound].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:sound].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.label :quality %>
       <%= form.select :quality, ["Low", "Medium", "High"], include_blank: true, class: "form-control" %>
+      <% if @recording.errors[:quality].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:quality].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.label :comment %>
       <%= form.text_area :comment, rows: 3, class: "form-control" %>
+      <% if @recording.errors[:comment].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:comment].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.label :attribution %>
       <%= form.text_area :attribution, rows: 2, class: "form-control" %>
+      <% if @recording.errors[:attribution].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:attribution].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.label :license_id %>
-      <%= form.collection_select :license_id, License.all, :id, :name, prompt: "Select license", class: "form-control" %>
+      <%= form.collection_select :license_id, License.all, :id, :name, prompt: "Select license", class: "form-control", allow_blank: false %>
+      <% if @recording.errors[:license_id].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:license_id].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.label :country_id %>
-      <%= form.collection_select :country_id, Country.all, :id, :name, prompt: "Select country", class: "form-control" %>
+      <%= form.collection_select :country_id, Country.all, :id, :name, prompt: "Select country", class: "form-control", selected: 2 %>
+      <% if @recording.errors[:country_id].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:country_id].join(', ') %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :gender_id %>
+      <%= form.collection_select :gender_id, Gender.all, :id, :gender, prompt: "Select gender", class: "form-control", selected: 3  %>
+      <% if @recording.errors[:gender_id].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:gender_id].join(', ') %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :age_id %>
+      <%= form.collection_select :age_id, Age.all, :id, :age, prompt: "Select age", class: "form-control", selected: 4  %>
+      <% if @recording.errors[:age_id].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:age_id].join(', ') %></p>
+      <% end %>
+    </div>
+
+    <div>
+      <%= form.label :call_type_id %>
+      <%= form.collection_select :call_type_id, CallType.all, :id, :call_type, prompt: "Select call type", class: "form-control", selected: 1 %>
+      <% if @recording.errors[:call_type_id].any? %>
+        <p class="text-red-500 text-sm mt-1"><%= @recording.errors[:call_type_id].join(', ') %></p>
+      <% end %>
     </div>
 
     <div>
       <%= form.submit class: "btn btn-primary" %>
     </div>
-  <% end %>
 
+  <% end %>
 </div>

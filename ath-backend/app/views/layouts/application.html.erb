@@ -26,6 +26,18 @@
   <body class="bg-gray-800 text-white">
     <%= content_for :header || "" %>
 
+  <% if notice %>
+    <div class="bg-green-600 text-white px-4 py-2 rounded mb-4">
+      <%= notice %>
+    </div>
+  <% end %>
+
+  <% if alert %>
+    <div class="bg-red-600 text-white px-4 py-2 rounded mb-4">
+      <%= alert %>
+    </div>
+  <% end %>
+
     <div class="w-[60rem] mx-auto">
       <%= yield %>
     </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
+ActiveRecord::Schema[8.0].define(version: 2025_10_17_131326) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -24,6 +24,22 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "ages", force: :cascade do |t|
+    t.string "age"
+    t.bigint "text_content_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["text_content_id"], name: "index_ages_on_text_content_id"
+  end
+
+  create_table "call_types", force: :cascade do |t|
+    t.string "call_type"
+    t.bigint "text_content_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["text_content_id"], name: "index_call_types_on_text_content_id"
   end
 
   create_table "countries", force: :cascade do |t|
@@ -49,6 +65,14 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
     t.index ["text_content_id"], name: "index_families_on_text_content_id"
   end
 
+  create_table "genders", force: :cascade do |t|
+    t.string "gender"
+    t.bigint "text_content_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["text_content_id"], name: "index_genders_on_text_content_id"
+  end
+
   create_table "languages", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -72,6 +96,16 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
     t.index ["text_content_id"], name: "index_orders_on_text_content_id"
   end
 
+  create_table "recording_species", force: :cascade do |t|
+    t.bigint "recording_id", null: false
+    t.bigint "species_id", null: false
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["recording_id"], name: "index_recording_species_on_recording_id"
+    t.index ["species_id"], name: "index_recording_species_on_species_id"
+  end
+
   create_table "recordings", force: :cascade do |t|
     t.string "sound_url"
     t.string "spectrogram_url"
@@ -84,7 +118,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "uploader_id"
+    t.bigint "gender_id"
+    t.bigint "age_id"
+    t.bigint "call_type_id"
+    t.index ["age_id"], name: "index_recordings_on_age_id"
+    t.index ["call_type_id"], name: "index_recordings_on_call_type_id"
     t.index ["country_id"], name: "index_recordings_on_country_id"
+    t.index ["gender_id"], name: "index_recordings_on_gender_id"
     t.index ["license_id"], name: "index_recordings_on_license_id"
     t.index ["uploader_id"], name: "index_recordings_on_uploader_id"
   end
@@ -129,12 +169,20 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_15_132524) do
     t.index ["text_content_id"], name: "index_translations_on_text_content_id"
   end
 
+  add_foreign_key "ages", "text_contents"
+  add_foreign_key "call_types", "text_contents"
   add_foreign_key "facts", "species", column: "specie_id"
   add_foreign_key "facts", "text_contents"
   add_foreign_key "families", "text_contents"
+  add_foreign_key "genders", "text_contents"
   add_foreign_key "orders", "text_contents"
+  add_foreign_key "recording_species", "recordings"
+  add_foreign_key "recording_species", "species"
   add_foreign_key "recordings", "admin_users", column: "uploader_id"
+  add_foreign_key "recordings", "ages"
+  add_foreign_key "recordings", "call_types"
   add_foreign_key "recordings", "countries"
+  add_foreign_key "recordings", "genders"
   add_foreign_key "recordings", "licenses"
   add_foreign_key "species", "families"
   add_foreign_key "species", "orders"

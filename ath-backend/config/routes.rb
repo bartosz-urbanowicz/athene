@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get "species/index"
+  get "species/create"
+  get "species/destroy"
+  get "species/edit"
+  get "species/new"
+  get "species/show"
+  get "species/update"
   namespace :admin do
     get "recordings/index"
     get "recordings/new"
@@ -31,7 +38,7 @@ Rails.application.routes.draw do
   get "/admin", to: redirect("/admin/dashboard")
   get "/admin/dashboard", to: "admin/dashboard#index"
 
-  scope "/admin" do
+  namespace :admin do
     resources :recordings
   end
 end
